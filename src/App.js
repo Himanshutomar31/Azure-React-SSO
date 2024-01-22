@@ -1,7 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  const getAccessToken = () => {
+    let response = axios.get("https://test22012024.azurewebsites.net/.auth/me");
+    console.log("response", response);
+    return response;
+  };
+  useEffect(() => {
+    getAccessToken.then((res) => {
+      console.log("access token=>", res);
+    });
+  });
   return (
     <div className="App">
       <header className="App-header">
