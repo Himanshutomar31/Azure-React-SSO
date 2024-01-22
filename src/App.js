@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn SSO Azure App Services
+          Learn SSO Azure App Service.
         </a>
       </header>
     </div>
