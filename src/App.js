@@ -6,7 +6,7 @@ import axios from "axios";
 function App() {
   const getAccessToken = async () => {
     let response = axios.get("https://test22012024.azurewebsites.net/.auth/me");
-    console.log("response", response);
+    console.log("response =>", response);
     return response;
   };
   useEffect(() => {
