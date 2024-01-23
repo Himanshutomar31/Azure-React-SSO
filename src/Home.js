@@ -1,5 +1,23 @@
+import { useEffect } from "react";
+import axios from "axios";
 
 function Home() {
+  const getAccessToken = async () => {
+    const response = await axios.get("https://test22012024.azurewebsites.net/.auth/me", {
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Replace * with the actual origin of your frontend
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });   
+    console.log("response =>", response);
+    return response;
+  };
+  useEffect(() => {
+    getAccessToken.then((res) => {
+      console.log("access token=>", res);
+    });
+  },[]);    
     return (
     <div className="App">
       <header className="App-header">
