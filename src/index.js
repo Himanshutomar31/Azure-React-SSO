@@ -23,8 +23,13 @@ const msalConfiguration = {
 // };
 const pca = new PublicClientApplication(msalConfiguration);
 
+if (!pca.getActiveAccount() && pca.getAllAccounts().length > 0) {
+  console.log("initial active account");
+  pca.setActiveAccount(pca.getActiveAccount()[0]);
+}
+
 pca.addEventCallback((event) => {
-  if (event.eventType === EventType.LOGIN_SUCCESS) {
+  if (event.eventType === EventType.LOGIN_SUCCESS && event.payload.account) {
     console.log("event", event);
     console.log("account", event.payload.account);
     pca.setActiveAccount(event.payload.account);
