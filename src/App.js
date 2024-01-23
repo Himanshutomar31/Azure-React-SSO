@@ -22,15 +22,13 @@ function App() {
       return fetch(`https://graph.microsoft.com/v1.0/me`, {
         method: "GET",
         headers,
-      }).then((response) => response.json())
+      }).then((response) => console.log(response.json()))
     });    
 
   };
 
   useEffect(() => {
-    getAccessToken().then((res) => {
-      console.log("access token", res);
-    });
+    getAccessToken();
   }, []);
   return (
     <Router>
