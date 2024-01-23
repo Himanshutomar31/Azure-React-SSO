@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { MsalProvider } from "@azure/msal-react";
-import { PublicClientApplication } from "@azure/msal-browser";
+import { EventType, PublicClientApplication } from "@azure/msal-browser";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -22,6 +22,14 @@ const msalConfiguration = {
 //   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
 // };
 const pca = new PublicClientApplication(msalConfiguration);
+
+pca.addEventCallback((event) => {
+  if (event.eventType === EventType.LOGIN_SUCCESS) {
+    console.log("event", event);
+    console.log("account", event.payload.account);
+    pca.setActiveAccount(event.payload.account);
+  }
+});
 
 root.render(
   <MsalProvider instance={pca}>

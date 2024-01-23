@@ -1,8 +1,8 @@
 import "./App.css";
 import Home from "./Home.js";
 // import axios from "axios";
-import { useEffect } from "react";
-import { useMsal } from "@azure/msal-react";
+// import { useEffect } from "react";
+// import { useMsal } from "@azure/msal-react";
 // import {
 //   AuthenticatedTemplate,
 //   UnauthenticatedTemplate,
@@ -12,12 +12,12 @@ import { useMsal } from "@azure/msal-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const { accounts } = useMsal();
+  // const { accounts } = useMsal();
 
-  useEffect(() => {
-    let user = accounts[0];
-    console.log("user", user);
-  }, [accounts]);
+  // useEffect(() => {
+  //   let user = accounts[0];
+  //   console.log("user", user);
+  // }, [accounts]);
 
   // useEffect(() => {
   //   const getAccessToken = async () => {
