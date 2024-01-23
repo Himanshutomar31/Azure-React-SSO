@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Home() {
   const getAccessToken = async () => {
+    console.log("response11 =>");
     const response = await axios.get("https://test22012024.azurewebsites.net/.auth/me", {
       headers: {
         "Access-Control-Allow-Origin": "*", // Replace * with the actual origin of your frontend
