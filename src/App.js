@@ -3,12 +3,12 @@ import Home from "./Home.js";
 // import axios from "axios";
 //import { useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-import {
-  // AuthenticatedTemplate,
-  // UnauthenticatedTemplate,
-  useMsal,
-  // useMsalAuthentication,
-} from "@azure/msal-react";
+// import {
+//   AuthenticatedTemplate,
+//   UnauthenticatedTemplate,
+//   useMsal,
+//   useMsalAuthentication,
+// } from "@azure/msal-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
