@@ -13,12 +13,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const { instance } = useMsal();
-  const account = instance.getActiveAccount();
 
-  // useEffect(() => {
-  //   let user = accounts[0];
-  //   console.log("user", user);
-  // }, [accounts]);
+  useEffect(() => {
+    const account = instance.getActiveAccount();
+    console.log("account", account);
+  }, [instance]);
 
   // useEffect(() => {
   //   const getAccessToken = async () => {
@@ -43,10 +42,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/home" element={<Home></Home>}></Route>
-        <Route
-          path="/"
-          element={<h1>Hello world! {console.log("account", account)}</h1>}
-        ></Route>
+        <Route path="/" element={<h1>Hello world!</h1>}></Route>
       </Routes>
     </Router>
   );
