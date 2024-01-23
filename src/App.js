@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./Home.js";
 // import axios from "axios";
-//import { useEffect } from "react";
+import { useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
 // import {
 //   AuthenticatedTemplate,
@@ -13,7 +13,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const { accounts } = useMsal();
-  const user = accounts[0];
+
+  useEffect(() => {
+    let user = accounts[0];
+    console.log("user", user);
+  }, [accounts]);
+
   // useEffect(() => {
   //   const getAccessToken = async () => {
   //     instance
@@ -37,10 +42,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/home" element={<Home></Home>}></Route>
-        <Route
-          path="/"
-          element={<h1>Hello world! {console.log("user", user)}</h1>}
-        ></Route>
+        <Route path="/" element={<h1>Hello world!</h1>}></Route>
       </Routes>
     </Router>
   );
