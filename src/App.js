@@ -7,9 +7,9 @@ import { useMsal } from "@azure/msal-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const { instance } = useMsal();
 
   useEffect(() => {
+    const { instance } = useMsal();
     const getAccessToken = async () => {
       instance
       .acquireTokenSilent({
