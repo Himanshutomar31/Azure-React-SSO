@@ -16,11 +16,6 @@ import { InteractionStatus } from "@azure/msal-browser";
 function App() {
   // const { instance } = useMsal();
 
-  // useEffect(() => {
-  //   const account = instance.getActiveAccount();
-  //   console.log("account", account);
-  // }, [instance]);
-
   const loginRequest = {
     scopes: ["User.Read"],
   };
@@ -31,6 +26,11 @@ function App() {
   if (inProgress === InteractionStatus.None && !isAuthenticated) {
     instance.loginRedirect(loginRequest);
   }
+
+  useEffect(() => {
+    const account = instance.getActiveAccount();
+    console.log("account", account);
+  }, [instance]);
 
   // useEffect(() => {
   //   const getAccessToken = async () => {
