@@ -3,12 +3,12 @@ import Home from "./Home.js";
 // import axios from "axios";
 import { useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-// import {
-//   AuthenticatedTemplate,
-//   UnauthenticatedTemplate,
-//   useMsal,
-//   useMsalAuthentication,
-// } from "@azure/msal-react";
+import {
+  AuthenticatedTemplate,
+  // UnauthenticatedTemplate,
+  // useMsal,
+  // useMsalAuthentication,
+} from "@azure/msal-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -41,8 +41,22 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/home" element={<Home></Home>}></Route>
-        <Route path="/" element={<h1>Hello world!</h1>}></Route>
+        <Route
+          path="/home"
+          element={
+            <AuthenticatedTemplate>
+              <Home></Home>
+            </AuthenticatedTemplate>
+          }
+        ></Route>
+        <Route
+          path="/"
+          element={
+            <AuthenticatedTemplate>
+              <h1>Hello world!</h1>
+            </AuthenticatedTemplate>
+          }
+        ></Route>
       </Routes>
     </Router>
   );
