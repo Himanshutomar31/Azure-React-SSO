@@ -12,6 +12,7 @@ import {
 } from "@azure/msal-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { InteractionStatus } from "@azure/msal-browser";
+import { EventType } from "@azure/msal-browser";
 
 function App() {
   // const { instance } = useMsal();
@@ -30,6 +31,24 @@ function App() {
   useEffect(() => {
     const account = instance.getActiveAccount();
     console.log("account", account);
+  }, [instance]);
+
+  useEffect(() => {
+    // This will be run on component mount
+    const callbackId = instance.addEventCallback((message) => {
+      // This will be run every time an event is emitted after registering this callback
+      if (message.eventType === EventType.LOGIN_SUCCESS) {
+        const user = message.payload;
+        console.log("user", user);
+      }
+    });
+
+    return () => {
+      // This will be run on component unmount
+      if (callbackId) {
+        instance.removeEventCallback(callbackId);
+      }
+    };
   }, [instance]);
 
   // useEffect(() => {
