@@ -4,6 +4,18 @@ import "./index.css";
 import App from "./App";
 import { MsalProvider } from "@azure/msal-react";
 import { EventType, PublicClientApplication } from "@azure/msal-browser";
+import { LogLevel } from "@azure/msal-browser";
+// Browser check variables
+// If you support IE, our recommendation is that you sign-in using Redirect APIs
+// If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
+const ua = window.navigator.userAgent;
+const msie = ua.indexOf("MSIE ");
+const msie11 = ua.indexOf("Trident/");
+const msedge = ua.indexOf("Edge/");
+const firefox = ua.indexOf("Firefox");
+const isIE = msie > 0 || msie11 > 0;
+const isEdge = msedge > 0;
+const isFirefox = firefox > 0;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
