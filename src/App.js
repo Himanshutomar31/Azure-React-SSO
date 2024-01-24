@@ -1,7 +1,7 @@
 import "./App.css";
 import Home from "./Home.js";
 // import axios from "axios";
-//import { useEffect } from "react";
+import { useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
 import {
   AuthenticatedTemplate,
