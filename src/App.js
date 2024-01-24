@@ -1,23 +1,36 @@
 import "./App.css";
 import Home from "./Home.js";
 // import axios from "axios";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
 import {
   AuthenticatedTemplate,
+  useIsAuthenticated,
   // UnauthenticatedTemplate,
   // useMsal,
   // useMsalAuthentication,
 } from "@azure/msal-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { InteractionStatus } from "@azure/msal-browser";
 
 function App() {
-  const { instance } = useMsal();
+  // const { instance } = useMsal();
 
-  useEffect(() => {
-    const account = instance.getActiveAccount();
-    console.log("account", account);
-  }, [instance]);
+  // useEffect(() => {
+  //   const account = instance.getActiveAccount();
+  //   console.log("account", account);
+  // }, [instance]);
+
+  const loginRequest = {
+    scopes: ["User.Read"],
+  };
+
+  const isAuthenticated = useIsAuthenticated();
+  const { instance, inProgress } = useMsal();
+
+  if (inProgress === InteractionStatus.None && !isAuthenticated) {
+    instance.loginRedirect(loginRequest);
+  }
 
   // useEffect(() => {
   //   const getAccessToken = async () => {

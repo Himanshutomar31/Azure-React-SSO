@@ -28,40 +28,40 @@ const isFirefox = firefox > 0;
 
 const msalConfig = {
   auth: {
-      clientId: "31a0fdca-b2f7-4d01-bb76-8d681ca5487c",
-      authority: `https://login.microsoftonline.com/a57f7d92-038e-4d4c-8265-7cd2beb33b34`,
-      redirectUri: "https://test22012024.azurewebsites.net",
-      postLogoutRedirectUri: "https://test22012024.azurewebsites.net",
+    clientId: "31a0fdca-b2f7-4d01-bb76-8d681ca5487c",
+    authority: `https://login.microsoftonline.com/a57f7d92-038e-4d4c-8265-7cd2beb33b34`,
+    redirectUri: "https://test22012024.azurewebsites.net",
+    postLogoutRedirectUri: "https://test22012024.azurewebsites.net",
   },
   cache: {
-      cacheLocation: "localStorage",
-      storeAuthStateInCookie: isIE || isEdge || isFirefox,
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: isIE || isEdge || isFirefox,
   },
   system: {
-      allowNativeBroker: false, // Disables WAM Broker
-      loggerOptions: {
-          loggerCallback: (level, message, containsPii) => {
-              if (containsPii) {
-                  return;
-              }
-              switch (level) {
-                  case LogLevel.Error:
-                      console.error(message);
-                      return;
-                  case LogLevel.Info:
-                      console.info(message);
-                      return;
-                  case LogLevel.Verbose:
-                      console.debug(message);
-                      return;
-                  case LogLevel.Warning:
-                      console.warn(message);
-                      return;
-                  default:
-                      return;
-              }
-          },
+    allowNativeBroker: false, // Disables WAM Broker
+    loggerOptions: {
+      loggerCallback: (level, message, containsPii) => {
+        if (containsPii) {
+          return;
+        }
+        switch (level) {
+          case LogLevel.Error:
+            console.error(message);
+            return;
+          case LogLevel.Info:
+            console.info(message);
+            return;
+          case LogLevel.Verbose:
+            console.debug(message);
+            return;
+          case LogLevel.Warning:
+            console.warn(message);
+            return;
+          default:
+            return;
+        }
       },
+    },
   },
 };
 
@@ -81,7 +81,6 @@ const msalConfig = {
 // export const graphConfig = {
 //   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
 // };
-
 
 // const pca = new PublicClientApplication(msalConfiguration);
 
@@ -108,7 +107,10 @@ export const msalInstance = new PublicClientApplication(msalConfig);
 
 msalInstance.initialize().then(() => {
   // Default to using the first account if no account is active on page load
-  if (!msalInstance.getActiveAccount() && msalInstance.getAllAccounts().length > 0) {
+  if (
+    !msalInstance.getActiveAccount() &&
+    msalInstance.getAllAccounts().length > 0
+  ) {
     // Account selection logic is app dependent. Adjust as needed for different use cases.
     msalInstance.setActiveAccount(msalInstance.getAllAccounts()[0]);
   }
@@ -127,8 +129,8 @@ msalInstance.initialize().then(() => {
   const root = ReactDOM.createRoot(container);
 
   root.render(
-      <MsalProvider instance={msalInstance}>
-        <App  />
-      </MsalProvider>
+    <MsalProvider instance={msalInstance}>
+      <App />
+    </MsalProvider>
   );
 });
