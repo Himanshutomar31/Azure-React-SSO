@@ -17,7 +17,7 @@ const isIE = msie > 0 || msie11 > 0;
 const isEdge = msedge > 0;
 const isFirefox = firefox > 0;
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // const msalConfiguration = {
 //   auth: {
@@ -66,14 +66,14 @@ const msalConfig = {
 };
 
 // Add here scopes for id token to be used at MS Identity Platform endpoints.
-const loginRequest = {
-  scopes: ["User.Read"]
-};
+// const loginRequest = {
+//   scopes: ["User.Read"]
+// };
 
-// Add here the endpoints for MS Graph API services you would like to use.
- const graphConfig = {
-  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
-};
+// // Add here the endpoints for MS Graph API services you would like to use.
+//  const graphConfig = {
+//   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
+// };
 // export const loginRequest = {
 //   scopes: ["User.Read"],
 // };
