@@ -92,6 +92,7 @@ const loginRequest = {
 //   </MsalProvider>
 // );
 
+export const msalInstance = new PublicClientApplication(msalConfig);
 
 msalInstance.initialize().then(() => {
   // Default to using the first account if no account is active on page load
